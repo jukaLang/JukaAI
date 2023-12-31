@@ -1,0 +1,60 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card ">
+                    <form method="post">
+                        <div class="card-header">
+                            <h4 class="card-title">Input</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>What do you want the program to do?</label>
+                                <textarea rows="4" cols="80" class="form-control" name="usercontent" > {{ request.form['usercontent'] }}</textarea>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-fill btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4 class="card-title">Result:</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {% for message in messages %}
+                                    <p>{{ message['output'] }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+{% endblock javascripts %}
